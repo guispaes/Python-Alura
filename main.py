@@ -27,17 +27,20 @@ def finalizar():
 def main(): 
     titulo()
     while True:
-        usuario = exibir_menu()
-        if usuario == 1:
-            cadastro()
-        elif usuario == 2:
-            lista_restaurantes_ativos()
-        elif usuario == 3:
-            ativar_restaurante()
-        elif usuario == 4:
-            finalizar()
-            break
-        else:
+        try:
+            usuario = exibir_menu()
+            if usuario == 1:
+                cadastro()
+            elif usuario == 2:
+                lista_restaurantes_ativos()
+            elif usuario == 3:
+                ativar_restaurante()
+            elif usuario == 4:
+                finalizar()
+                break
+            else:
+                print("\nPor favor, utilize uma op©ão válida.")
+        except:
             print("\nPor favor, utilize uma op©ão válida.")
 
 
