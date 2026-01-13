@@ -1,6 +1,7 @@
 from os import system
 from time import sleep
 
+restaurantes = []
 def titulo():
     print("""                                                        
  _____     _              _____                         
@@ -14,8 +15,20 @@ def exibir_menu():
     return resposta
 def cadastro():
     print("\nCadastro:")
+    while True:
+        restaurantes.append({'Nome do Restaurante': str(input("Nome: ").capitalize()),
+                            'Categoria': str(input('Categoria: ').capitalize()),
+                            'Status': False })
+        continuar = str(input("\nQuer continuar adicionar outros estabelecimentos? S/N: ").strip().upper())
+        if continuar == "S":
+            pass
+        elif continuar == "N": 
+            print("\nVoltando ao menu.")
+            break
 def lista_restaurantes_ativos():
     print("\nLista de restaurantes ativos:")
+    for restaurante in restaurantes:
+        print(f"- {restaurante['Nome do Restaurante']} | {restaurante['Categoria']} | {restaurante['Status']}")
 def ativar_restaurante():
     print("\nAtivar restaurante:")
 def finalizar():
