@@ -26,9 +26,24 @@ def cadastro():
             print("\nVoltando ao menu.")
             break
 def lista_restaurantes_ativos():
-    print("\nLista de restaurantes ativos:")
-    for restaurante in restaurantes:
-        print(f"- {restaurante['Nome do Restaurante']} | {restaurante['Categoria']} | {restaurante['Status']}")
+    teste = True
+    while teste == True: 
+        if restaurantes:
+            for restaurante in restaurantes:
+                if restaurante['Status'] == True: 
+                    print("\nLista de restaurantes ativos:")
+                    if restaurante['Status'] == True: 
+                        print(f"- {restaurante['Nome do Restaurante']} | {restaurante['Categoria']} | {restaurante['Status']}")
+                        pass
+                    teste = False
+                    break
+                else: 
+                    print("Não há restaurantes ativos no momento.")
+                    teste = False
+                pass
+        else:
+            print("Não há restaurantes ativos no momento.")
+            teste = False
 def ativar_restaurante():
     print("\nAtivar restaurante:")
 def finalizar():
