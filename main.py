@@ -26,26 +26,35 @@ def cadastro():
             print("\nVoltando ao menu.")
             break
 def lista_restaurantes_ativos():
-    teste = True
-    while teste == True: 
-        if restaurantes:
-            for restaurante in restaurantes:
-                if restaurante['Status'] == True: 
+    ativo = False
+    if restaurantes:
+        for restaurante in restaurantes:
+            if restaurante['Status'] == True: 
+                if not ativo: 
                     print("\nLista de restaurantes ativos:")
-                    if restaurante['Status'] == True: 
-                        print(f"- {restaurante['Nome do Restaurante']} | {restaurante['Categoria']} | {restaurante['Status']}")
-                        pass
-                    teste = False
-                    break
-                else: 
-                    print("Não há restaurantes ativos no momento.")
-                    teste = False
-                pass
-        else:
-            print("Não há restaurantes ativos no momento.")
-            teste = False
+                    ativo = True
+                print(f"- {restaurante['Nome do Restaurante']} | {restaurante['Categoria']} | Ativo")                    
+            else: 
+                print("Não há restaurantes ativos no momento.")           
+    else:
+        print("Não há restaurantes ativos no momento.")
 def ativar_restaurante():
-    print("\nAtivar restaurante:")
+    ativo = False
+    if restaurantes:
+        contador = 0
+        for restaurante in restaurantes:
+            if restaurante['Status'] == False: 
+                contador += 1
+                if not ativo: 
+                    print("\nLista de restaurantes desativos:")
+                    ativo = True
+                print(f"- {contador}. {restaurante['Nome do Restaurante']} | {restaurante['Categoria']} | Desativo")                         
+        if contador == 0: 
+                print("Não há restaurantes desativos no momento.")
+        ativador = int(input("Qual restaurante deseja ativar? Utilize o índice: "))
+        restaurantes[ativador-1]['Status'] = True        
+    else:
+        print("Não há restaurantes desativos no momento.")
 def finalizar():
     print("\nFinalizando o programa.")
     sleep(1.5)
